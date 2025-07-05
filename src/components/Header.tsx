@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Tools", href: "#tools" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Tools", href: "/tools" },
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false);
+  const isActive = (href: string) => {
+    return location.pathname === href;
   };
 
   return (
@@ -30,23 +31,27 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-primary transition-smooth"
+                to={item.href}
+                className={`transition-smooth ${
+                  isActive(item.href) 
+                    ? "text-primary font-semibold" 
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 {item.name}
-              </button>
+              </Link>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:flex">
             <Button 
-              onClick={() => scrollToSection("#contact")}
+              asChild
               className="bg-hero-gradient hover:opacity-90"
             >
-              Get Started
+              <Link to="/contact">Get Started</Link>
             </Button>
           </div>
 
@@ -67,19 +72,24 @@ const Header = () => {
           <div className="md:hidden py-4 border-t">
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <button
+                <Link
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-left text-muted-foreground hover:text-primary transition-smooth"
+                  to={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`text-left transition-smooth ${
+                    isActive(item.href) 
+                      ? "text-primary font-semibold" 
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   {item.name}
-                </button>
+                </Link>
               ))}
               <Button 
-                onClick={() => scrollToSection("#contact")}
+                asChild
                 className="bg-hero-gradient hover:opacity-90 mt-4"
               >
-                Get Started
+                <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
               </Button>
             </nav>
           </div>
