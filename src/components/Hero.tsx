@@ -1,15 +1,14 @@
 import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 const Hero = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
+    element?.scrollIntoView({
+      behavior: "smooth"
+    });
   };
-
-  return (
-    <section id="home" className="pt-24 pb-16 min-h-screen flex items-center">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  return <section id="home" className="pt-24 pb-16 min-h-screen flex items-center bg-cyan-950">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-cyan-950">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-card border rounded-full mb-8 elegant-shadow">
@@ -18,13 +17,13 @@ const Hero = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-emerald-400">
             Build Amazing Things with{" "}
-            <span className="gradient-text">Next-Gen Tools</span>
+            <span className="gradient-text text-lime-600">Next-Gen Tools</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed text-zinc-50">
             Discover cutting-edge tools and resources that empower teams to build, 
             scale, and innovate faster than ever before. Join thousands of developers 
             and creators.
@@ -32,20 +31,11 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              size="lg"
-              onClick={() => scrollToSection("#tools")}
-              className="bg-hero-gradient hover:opacity-90 text-lg px-8 py-3"
-            >
+            <Button size="lg" onClick={() => scrollToSection("#tools")} className="bg-hero-gradient hover:opacity-90 text-lg px-8 py-3 text-zinc-950 bg-green-400 hover:bg-green-300">
               Explore Tools
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => scrollToSection("#about")}
-              className="text-lg px-8 py-3"
-            >
+            <Button variant="outline" size="lg" onClick={() => scrollToSection("#about")} className="text-lg px-8 py-3">
               Learn More
             </Button>
           </div>
@@ -71,8 +61,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
