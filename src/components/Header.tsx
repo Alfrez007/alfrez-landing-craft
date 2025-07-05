@@ -27,7 +27,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 bg-slate-950">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 bg-zinc-950">
             <h1 className="text-2xl font-bold gradient-text">Alfrez</h1>
           </div>
 
