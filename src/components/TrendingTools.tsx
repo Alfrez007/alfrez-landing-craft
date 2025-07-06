@@ -35,8 +35,8 @@ const TrendingTools = () => {
   ];
 
   return (
-    <section id="tools" className="py-24 bg-gradient-to-b from-muted/30 to-background relative">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+    <section id="tools" className="py-24 bg-gradient-to-b from-muted/50 to-background relative">
+      <div className="absolute inset-0 bg-grid-pattern opacity-10" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-20">
