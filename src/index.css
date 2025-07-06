@@ -39,12 +39,15 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 214 88% 51%;
 
-    /* Custom design tokens */
+/* Custom design tokens */
     --hero-gradient: linear-gradient(135deg, hsl(214 88% 51%) 0%, hsl(261 83% 58%) 100%);
     --card-gradient: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(215 25% 98%) 100%);
+    --glass-gradient: linear-gradient(145deg, hsl(0 0% 100% / 0.1) 0%, hsl(215 25% 98% / 0.05) 100%);
     --glow-shadow: 0 0 40px hsl(214 88% 51% / 0.3);
     --elegant-shadow: 0 10px 30px -10px hsl(222.2 84% 4.9% / 0.1);
+    --card-hover-shadow: 0 20px 40px -12px hsl(222.2 84% 4.9% / 0.15);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -123,6 +126,12 @@
     background: var(--card-gradient);
   }
   
+  .glass-gradient {
+    background: var(--glass-gradient);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.2);
+  }
+  
   .glow-shadow {
     box-shadow: var(--glow-shadow);
   }
@@ -131,15 +140,36 @@
     box-shadow: var(--elegant-shadow);
   }
   
+  .card-hover-shadow {
+    box-shadow: var(--card-hover-shadow);
+  }
+  
   .transition-smooth {
     transition: var(--transition-smooth);
   }
   
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+  
   .hover-lift {
-    @apply transition-smooth hover:translate-y-[-4px] hover:shadow-xl;
+    @apply transition-smooth hover:translate-y-[-8px] hover:shadow-2xl;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-bold;
+  }
+  
+  .hover-scale {
+    @apply transition-smooth hover:scale-105;
+  }
+  
+  .pulse-glow {
+    @apply animate-pulse;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  
+  .text-gradient-hover {
+    @apply transition-smooth hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:bg-clip-text hover:text-transparent;
   }
 }

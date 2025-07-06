@@ -50,36 +50,40 @@ const AboutContact = () => {
   ];
 
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="py-24 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
           {/* About Section */}
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              About <span className="gradient-text">Alfrez</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              We're on a mission to democratize access to powerful development tools. 
-              Our platform brings together the best resources, tutorials, and tools 
-              that developers need to build exceptional products.
-            </p>
-            
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Founded by developers for developers, we understand the challenges 
-              of finding the right tools for your project. That's why we've curated 
-              a comprehensive collection of resources that span from ideation to deployment.
-            </p>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-8 leading-tight">
+                About <span className="gradient-text">Alfrez</span>
+              </h2>
+              <div className="space-y-6">
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  We're on a mission to democratize access to powerful development tools. 
+                  Our platform brings together the best resources, tutorials, and tools 
+                  that developers need to build exceptional products.
+                </p>
+                
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Founded by developers for developers, we understand the challenges 
+                  of finding the right tools for your project. That's why we've curated 
+                  a comprehensive collection of resources that span from ideation to deployment.
+                </p>
+              </div>
+            </div>
 
             {/* Features */}
-            <div className="space-y-6">
+            <div className="space-y-8">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="p-2 bg-primary/10 rounded-lg mt-1">
-                    <feature.icon className="h-5 w-5 text-primary" />
+                <div key={index} className="flex items-start gap-6 hover-scale p-4 rounded-2xl hover:bg-card/50 transition-all">
+                  <div className="p-3 bg-primary/10 rounded-2xl">
+                    <feature.icon className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">{feature.title}</h3>
-                    <p className="text-muted-foreground text-sm">{feature.description}</p>
+                    <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               ))}
@@ -88,15 +92,15 @@ const AboutContact = () => {
 
           {/* Contact Section */}
           <div id="contact">
-            <Card className="elegant-shadow border-0 card-gradient">
-              <CardHeader>
-                <CardTitle className="text-2xl">Get in Touch</CardTitle>
-                <p className="text-muted-foreground">
-                  Have questions or want to collaborate? We'd love to hear from you.
+            <Card className="elegant-shadow border-0 card-gradient hover:card-hover-shadow transition-all duration-300 overflow-hidden">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-3xl font-bold mb-4">Get in Touch</CardTitle>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Have questions or want to collaborate? We'd love to hear from you and discuss how we can help.
                 </p>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <CardContent className="pt-2">
+                <form onSubmit={handleSubmit} className="space-y-8">
                   <div>
                     <Input
                       name="name"
@@ -104,7 +108,7 @@ const AboutContact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="transition-smooth focus:ring-2 focus:ring-primary/20"
+                      className="h-12 text-lg transition-smooth focus:ring-2 focus:ring-primary/20 rounded-xl"
                     />
                   </div>
                   <div>
@@ -115,7 +119,7 @@ const AboutContact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="transition-smooth focus:ring-2 focus:ring-primary/20"
+                      className="h-12 text-lg transition-smooth focus:ring-2 focus:ring-primary/20 rounded-xl"
                     />
                   </div>
                   <div>
@@ -125,16 +129,15 @@ const AboutContact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      className="min-h-[120px] transition-smooth focus:ring-2 focus:ring-primary/20"
+                      className="min-h-[140px] text-lg transition-smooth focus:ring-2 focus:ring-primary/20 rounded-xl resize-none"
                     />
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-hero-gradient hover:opacity-90"
-                    size="lg"
+                    className="w-full bg-hero-gradient hover:opacity-90 hover:scale-105 h-14 text-lg rounded-xl transition-all shadow-lg hover:shadow-xl"
                   >
                     Send Message
-                    <Send className="ml-2 h-4 w-4" />
+                    <Send className="ml-3 h-5 w-5" />
                   </Button>
                 </form>
               </CardContent>

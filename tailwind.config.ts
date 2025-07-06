@@ -67,10 +67,12 @@ export default {
 			backgroundImage: {
 				'hero-gradient': 'var(--hero-gradient)',
 				'card-gradient': 'var(--card-gradient)',
+				'glass-gradient': 'var(--glass-gradient)',
 			},
 			boxShadow: {
 				'glow': 'var(--glow-shadow)',
 				'elegant': 'var(--elegant-shadow)',
+				'card-hover': 'var(--card-hover-shadow)',
 			},
 			transitionTimingFunction: {
 				'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
