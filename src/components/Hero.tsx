@@ -1,5 +1,6 @@
 import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const scrollToSection = (href: string) => {
@@ -48,10 +49,10 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              onClick={() => scrollToSection("#about")}
+              asChild
               className="text-lg px-10 py-4 h-auto rounded-xl border-2 hover:bg-primary/5 transition-all hover:scale-105"
             >
-              Learn More
+              <Link to="/blog">Learn More</Link>
             </Button>
           </div>
 

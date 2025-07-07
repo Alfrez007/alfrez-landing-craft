@@ -1,26 +1,27 @@
 import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     Product: [
-      { name: "Tools", href: "#tools" },
-      { name: "Pricing", href: "#" },
-      { name: "Documentation", href: "#" },
-      { name: "API", href: "#" },
+      { name: "Tools", href: "/tools" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "Documentation", href: "/docs" },
+      { name: "API", href: "/api" },
     ],
     Company: [
-      { name: "About", href: "#about" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Contact", href: "#contact" },
+      { name: "About", href: "/about" },
+      { name: "Blog", href: "/blog" },
+      { name: "Careers", href: "/careers" },
+      { name: "Contact", href: "/contact" },
     ],
     Support: [
-      { name: "Help Center", href: "#" },
-      { name: "Community", href: "#" },
-      { name: "Status", href: "#" },
-      { name: "Feedback", href: "#" },
+      { name: "Help Center", href: "/help" },
+      { name: "Community", href: "/community" },
+      { name: "Status", href: "/status" },
+      { name: "Feedback", href: "/feedback" },
     ],
   };
 
@@ -28,15 +29,8 @@ const Footer = () => {
     { icon: Github, href: "#", label: "GitHub" },
     { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Mail, href: "#contact", label: "Email" },
+    { icon: Mail, href: "/contact", label: "Email" },
   ];
-
-  const scrollToSection = (href: string) => {
-    if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <footer className="bg-muted/50 border-t border-border">
@@ -51,14 +45,24 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollToSection(social.href)}
-                  className="p-2 bg-card hover:bg-primary/10 rounded-lg transition-smooth hover-lift"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-5 w-5 text-muted-foreground hover:text-primary" />
-                </button>
+                social.href.startsWith("/") ? (
+                  <Link
+                    key={index}
+                    to={social.href}
+                    className="p-2 bg-card hover:bg-primary/10 rounded-lg transition-smooth hover-lift"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="h-5 w-5 text-muted-foreground hover:text-primary" />
+                  </Link>
+                ) : (
+                  <button
+                    key={index}
+                    className="p-2 bg-card hover:bg-primary/10 rounded-lg transition-smooth hover-lift"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="h-5 w-5 text-muted-foreground hover:text-primary" />
+                  </button>
+                )
               ))}
             </div>
           </div>
@@ -70,12 +74,12 @@ const Footer = () => {
               <ul className="space-y-3">
                 {links.map((link, index) => (
                   <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
+                    <Link
+                      to={link.href}
                       className="text-muted-foreground hover:text-primary transition-smooth text-left"
                     >
                       {link.name}
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>

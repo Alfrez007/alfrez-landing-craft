@@ -1,6 +1,7 @@
 import { ArrowRight, Code, Database, Rocket, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const TrendingTools = () => {
   const tools = [
@@ -87,10 +88,13 @@ const TrendingTools = () => {
           <Button 
             size="lg" 
             variant="outline"
+            asChild
             className="px-10 py-4 h-auto text-lg rounded-xl border-2 hover:bg-primary/5 hover:scale-105 transition-all"
           >
-            View More Tools
-            <ArrowRight className="ml-3 h-6 w-6" />
+            <Link to="/tools">
+              View More Tools
+              <ArrowRight className="ml-3 h-6 w-6" />
+            </Link>
           </Button>
         </div>
       </div>
